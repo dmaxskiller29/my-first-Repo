@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TodoList with Javascript and Bootstrap</title>
+    <!-- CSS only -->
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<style>
+    * {
+        padding: 5px;
+        margin: 15px;
+        text-align: center;
+    }
+
+    :root {
+        --c1: white;
+        --c2: grey;
+        --c3: darkgrey;
+        --c4: darkgrey;
+        --c5: grey;
+        --c6: white;
+    }
+
+    body {
+        background: radial-gradient(circle at top, var(--c1), var(--c2), var(--c3), transparent), radial-gradient(circle at top, var(--c4), var(--c5), var(--c6), transparent);
+        background-size: 400% 400%;
+        -webkit-animation: animateWebKitNice 12s ease-in-out infinite;
+        height: 100vh;
+    }
+
+    @-webkit-keyframes animateWebKitNice {
+        0% {
+            background-position: 0 100%
+        }
+        50% {
+            background-position: 100% 100%
+        }
+        100% {
+            background-position: 0 50%
+        }
+    }
+
+    .container{
+        height: 100vh;
+        display:grid;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+
+    .btn{
+        grid-row: 3 / span 1;
+    }
+    .btn:hover{
+        border: 10px lawngreen solid;
+    }
+    .container input{
+        grid-row: 3 / span 1;
+    }
+</style>
+
+<body>
+
+<div class="container">
+    <input type="text" id="myInput" placeholder="...">
+
+    <button class="btn btn-outline-dark" onclick=" putTextInList()">Add New Task</button>
+
+    <button type="submit" class="btn-list">
+        <i class="fa-solid fa-circle-x"></i>
+    </button>
+
+    <ul class="myUL">
+        <li>Make homemade ice-cream</li>
+        <li>research discord bots</li>
+    </ul>
+
+</div>
+
+
+
+<script>
+    function putTextInList() {
+        var inputField = document.getElementById("myInput").value;
+        var newListItem = document.createElement("li");
+        var textNode = document.createTextNode(inputField);
+        newListItem.appendChild(textNode);
+        document.querySelector(".myUL").appendChild(newListItem);
+        document.getElementById("myInput").value = "";
+    }
+</script>
+<script>
+    const inputText = document.querySelector('#txt');
+    const myButton = document.querySelector('.btn-list');
+    const list = document.querySelector('.container ul');
+    myButton.addEventListener('click', (e) => {
+        if (inputText.value != "") {
+            e.preventDefault();
+            //create li
+            const myLi = document.createElement('li');
+            myLi.innerHTML = inputText.value;
+            list.appendChild(myLi);
+            //create span
+            const mySpan = document.createElement('span');
+            mySpan.innerHTMl = 'x';
+            myLi.appendChild(mySpan);
+        }
+        const close = document.querySelectorAll('span');
+        for (let i = 0; i < close.length; i++) {
+            close[i].addEventListener('click', () => {
+                close[i].parentElement.style.opacity = 0;
+                setTimeout(() => {
+                    close[i].parentElement.style.display = "none";
+                    close[i].parentElement.remove();
+                }, 500);
+            })
+        }
+        inputText.value = "";
+    })
+</script>
+<button><a href="Index.Html.html">My Index</a></button>
+</body>
+</html>
+
+

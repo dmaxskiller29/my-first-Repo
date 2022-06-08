@@ -1,0 +1,23 @@
+:root{
+    --firstRGBcolor: rgba(0, 255, 43, 0.61);
+    --secondRGBcolor: rgba(106, 255, 30, 0.61);
+}
+
+
+#colorBody{
+    background: linear-gradient(to top, var(--firstRGBcolor) , var(--secondRGBcolor)) no-repeat;
+    height: 100vh; /*100% aber nachdem die code, das bildschirm grosse gecheckt hat*/
+}
+
+#colorBody{
+    text-align: center;
+}
+
+button:hover{
+    box-shadow:10px 10px 10px 10px lightblue;
+    transition: box-shadow 1000ms ease-out;
+}
+
+button{
+    border-radius: 40px;
+}
